@@ -1,0 +1,17 @@
+machine,downtime_hours,maintenance_days,status,failure
+CNC Machine 1,2,0,Running,0
+CNC Machine 2,4,2,Running,0
+CNC Machine 3,18,7,Stopped,1
+Milling Machine 1,3,0,Running,0
+Drilling Machine 1,5,1,Running,0
+Grinding Machine 1,2,0,Running,0
+Lathe Machine 1,6,3,Running,0
+Assembly Machine 1,3,0,Running,0
+CNC Machine 1,12,5,Running,1
+CNC Machine 2,10,6,Running,1
+Milling Machine 1,9,4,Running,1
+Drilling Machine 1,7,2,Running,0
+Grinding Machine 1,14,6,Running,1
+Lathe Machine 1,11,5,Running,1
+Assembly Machine 1,4,1,Running,0
+CNC Machine 3,20,10,Stopped,1

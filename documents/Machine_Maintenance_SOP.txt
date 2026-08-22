@@ -1,0 +1,37 @@
+MACHINE MAINTENANCE SOP
+
+1. Purpose
+This SOP explains the basic maintenance procedure for manufacturing machines.
+
+2. Safety Precautions
+- Switch off the machine before maintenance.
+- Disconnect the power supply.
+- Wear required safety equipment.
+- Do not touch moving parts during maintenance.
+
+3. Daily Inspection
+- Check machine power connection.
+- Check abnormal noise or vibration.
+- Check oil and lubrication levels.
+- Check machine temperature.
+- Clean the machine working area.
+
+4. Maintenance Procedure
+Step 1: Stop the machine.
+Step 2: Disconnect the power supply.
+Step 3: Inspect machine components.
+Step 4: Check lubrication.
+Step 5: Check belts and connections.
+Step 6: Clean the machine.
+Step 7: Restart and test the machine.
+
+5. Maintenance Frequency
+Daily: Visual inspection and cleaning.
+Weekly: Lubrication and component inspection.
+Monthly: Detailed maintenance and calibration check.
+
+6. Emergency Condition
+If abnormal noise, excessive vibration, overheating or sudden machine failure is observed, stop the machine immediately and inform the maintenance supervisor.
+
+7. Responsible Person
+Maintenance Technician and Production Supervisor are responsible for maintenance activities.

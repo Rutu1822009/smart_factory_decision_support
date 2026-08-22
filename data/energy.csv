@@ -1,0 +1,17 @@
+date,machine,energy_kwh,operating_hours
+2026-08-01,CNC Machine 1,145,8
+2026-08-01,CNC Machine 2,160,8
+2026-08-01,CNC Machine 3,220,5
+2026-08-01,Milling Machine 1,130,8
+2026-08-02,CNC Machine 1,150,8
+2026-08-02,CNC Machine 2,165,8
+2026-08-02,CNC Machine 3,235,4
+2026-08-02,Milling Machine 1,135,8
+2026-08-03,CNC Machine 1,148,8
+2026-08-03,CNC Machine 2,170,8
+2026-08-03,CNC Machine 3,245,4
+2026-08-03,Milling Machine 1,132,8
+2026-08-04,CNC Machine 1,152,8
+2026-08-04,CNC Machine 2,168,8
+2026-08-04,CNC Machine 3,250,3
+2026-08-04,Milling Machine 1,138,8

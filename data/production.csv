@@ -1,0 +1,16 @@
+date,part,line,target,produced
+2026-08-01,Robotic Arm Joint,Line 1,200,185
+2026-08-01,Servo Motor Housing,Line 2,150,142
+2026-08-01,Robot Base Plate,Line 3,120,115
+2026-08-02,Robotic Arm Joint,Line 1,200,195
+2026-08-02,Servo Motor Housing,Line 2,150,148
+2026-08-02,Robot Base Plate,Line 3,120,118
+2026-08-03,Robotic Arm Joint,Line 1,220,205
+2026-08-03,Servo Motor Housing,Line 2,160,151
+2026-08-03,Robot Base Plate,Line 3,130,124
+2026-08-04,Robotic Arm Joint,Line 1,220,210
+2026-08-04,Servo Motor Housing,Line 2,160,155
+2026-08-04,Robot Base Plate,Line 3,130,127
+2026-08-05,Robotic Arm Joint,Line 1,230,218
+2026-08-05,Servo Motor Housing,Line 2,170,162
+2026-08-05,Robot Base Plate,Line 3,140,135

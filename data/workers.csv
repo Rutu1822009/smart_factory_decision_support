@@ -1,0 +1,17 @@
+date,worker,shift,part,production_target,production_actual,attendance_hours
+2026-08-01,Worker 1,A,Robotic Arm Joint,70,66,8
+2026-08-01,Worker 2,A,Servo Motor Housing,60,57,8
+2026-08-01,Worker 3,B,Robot Base Plate,55,52,8
+2026-08-01,Worker 4,B,Robotic Arm Joint,70,64,7
+2026-08-02,Worker 1,A,Robotic Arm Joint,70,69,8
+2026-08-02,Worker 2,A,Servo Motor Housing,60,59,8
+2026-08-02,Worker 3,B,Robot Base Plate,55,53,8
+2026-08-02,Worker 4,B,Robotic Arm Joint,70,67,8
+2026-08-03,Worker 1,A,Robotic Arm Joint,75,71,8
+2026-08-03,Worker 2,A,Servo Motor Housing,65,61,7
+2026-08-03,Worker 3,B,Robot Base Plate,60,58,8
+2026-08-03,Worker 4,B,Robotic Arm Joint,75,72,8
+2026-08-04,Worker 1,A,Robotic Arm Joint,75,73,8
+2026-08-04,Worker 2,A,Servo Motor Housing,65,63,8
+2026-08-04,Worker 3,B,Robot Base Plate,60,55,7
+2026-08-04,Worker 4,B,Robotic Arm Joint,75,70,8

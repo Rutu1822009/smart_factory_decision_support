@@ -1,0 +1,9 @@
+date,machine,maintenance_type,last_maintenance,next_maintenance,downtime_hours,maintenance_status
+2026-08-01,CNC Machine 1,Preventive,2026-07-20,2026-08-20,2,Completed
+2026-08-01,CNC Machine 2,Preventive,2026-07-18,2026-08-18,4,Completed
+2026-08-01,CNC Machine 3,Corrective,2026-07-10,2026-08-13,18,Overdue
+2026-08-01,Milling Machine 1,Preventive,2026-07-22,2026-08-22,3,Completed
+2026-08-01,Drilling Machine 1,Preventive,2026-07-19,2026-08-19,5,Due Soon
+2026-08-01,Grinding Machine 1,Preventive,2026-07-25,2026-08-25,2,Completed
+2026-08-01,Lathe Machine 1,Preventive,2026-07-17,2026-08-17,6,Due Soon
+2026-08-01,Assembly Machine 1,Preventive,2026-07-21,2026-08-21,3,Completed

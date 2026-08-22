@@ -1,0 +1,13 @@
+date,line,part,total,passed,rejected,defect_rate
+2026-08-01,Line 1,Robotic Arm Joint,185,177,8,4.32
+2026-08-01,Line 2,Servo Motor Housing,142,137,5,3.52
+2026-08-01,Line 3,Robot Base Plate,115,112,3,2.61
+2026-08-02,Line 1,Robotic Arm Joint,195,185,10,5.13
+2026-08-02,Line 2,Servo Motor Housing,148,144,4,2.70
+2026-08-02,Line 3,Robot Base Plate,118,115,3,2.54
+2026-08-03,Line 1,Robotic Arm Joint,205,193,12,5.85
+2026-08-03,Line 2,Servo Motor Housing,151,146,5,3.31
+2026-08-03,Line 3,Robot Base Plate,124,120,4,3.23
+2026-08-04,Line 1,Robotic Arm Joint,210,199,11,5.24
+2026-08-04,Line 2,Servo Motor Housing,155,149,6,3.87
+2026-08-04,Line 3,Robot Base Plate,127,124,3,2.36

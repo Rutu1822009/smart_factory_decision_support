@@ -1,0 +1,9 @@
+material,current_stock,min_stock,consumption_per_day
+Steel Shaft,18,30,8
+Aluminium Block,70,40,6
+Servo Gear,25,35,7
+Ball Bearing,60,30,5
+Copper Wire,22,30,6
+Motor Housing,45,30,5
+Fasteners,80,40,10
+Robot Joint Material,20,35,8
