@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import textwrap
 
-from ai_assistant import get_answer
+from agents.agent_controller import run_agent
 
 from rag_assistant import (
     load_pdf_text,
@@ -40,6 +40,10 @@ st.markdown(
     """
     <style>
 
+    /* ==============================
+       MAIN PAGE
+    ============================== */
+
     .main {
         background-color: #f5f7fa;
     }
@@ -47,57 +51,188 @@ st.markdown(
     .block-container {
         padding-top: 2rem;
         padding-bottom: 2rem;
+        max-width: 1400px;
+    }
+
+
+    /* ==============================
+       DASHBOARD HEADER
+    ============================== */
+
+    .dashboard-header {
+        background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        padding: 24px 28px;
+        border-radius: 18px;
+        border: 1px solid #bfdbfe;
+        box-shadow: 0 5px 18px rgba(37, 99, 235, 0.08);
+        margin-bottom: 22px;
     }
 
     .main-title {
-        font-size: 38px;
-        font-weight: 700;
-        margin-bottom: 5px;
+        font-size: 40px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 4px;
+        letter-spacing: -0.5px;
     }
 
     .subtitle {
         font-size: 17px;
-        color: #6b7280;
-        margin-bottom: 25px;
+        color: #475569;
+        margin-bottom: 5px;
     }
+
+
+    /* ==============================
+       KPI CARDS
+    ============================== */
 
     .kpi-card {
         background: white;
-        padding: 20px;
-        border-radius: 14px;
+        padding: 20px 22px;
+        border-radius: 16px;
         border: 1px solid #e5e7eb;
-        box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-        min-height: 125px;
+        border-top: 4px solid #2563eb;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        min-height: 120px;
+        transition: all 0.2s ease;
+    }
+
+    .kpi-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(37,99,235,0.12);
     }
 
     .kpi-title {
         font-size: 14px;
-        color: #6b7280;
-        margin-bottom: 8px;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 10px;
     }
 
     .kpi-value {
-        font-size: 28px;
+        font-size: 30px;
+        font-weight: 750;
+        color: #0f172a;
+    }
+
+
+    /* ==============================
+       SECTION HEADERS
+    ============================== */
+
+    .section-header {
+        font-size: 23px;
+        font-weight: 700;
+        color: #111827;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+
+
+    /* ==============================
+       FACTORY STATUS CARD
+    ============================== */
+
+    .status-card {
+        background: white;
+        padding: 18px 22px;
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        margin-bottom: 20px;
+    }
+
+    .status-title {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 5px;
+    }
+
+    .status-value {
+        font-size: 22px;
         font-weight: 700;
         color: #111827;
     }
 
-    .section-header {
-        font-size: 23px;
-        font-weight: 650;
-        margin-top: 15px;
-        margin-bottom: 15px;
+
+    /* ==============================
+       MANAGEMENT RISK BOXES
+    ============================== */
+
+    .risk-box {
+        padding: 16px 20px;
+        border-radius: 14px;
+        margin-bottom: 12px;
+        border: 1px solid;
+        font-size: 15px;
     }
+
+    .risk-box strong {
+        font-size: 17px;
+    }
+
+    .risk-high {
+        background: #fef2f2;
+        border-color: #fecaca;
+        color: #991b1b;
+    }
+
+    .risk-medium {
+        background: #fff7ed;
+        border-color: #fed7aa;
+        color: #9a3412;
+    }
+
+    .risk-low {
+        background: #f0fdf4;
+        border-color: #bbf7d0;
+        color: #166534;
+    }
+
+
+    /* ==============================
+       SIDEBAR
+    ============================== */
 
     section[data-testid="stSidebar"] {
         background-color: #111827;
     }
 
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] label {
+        color: white !important;
+    }
+
+
+    /* ==============================
+       BUTTONS
+    ============================== */
+
+    .stButton > button {
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 8px 18px;
+    }
+
+
+    /* ==============================
+       DATAFRAME
+    ============================== */
+
+    [data-testid="stDataFrame"] {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+
     </style>
     """,
     unsafe_allow_html=True
 )
-
 
 # ============================================================
 # LOAD DATA
@@ -212,26 +347,24 @@ else:
     defect_percentage = 0
 
 
-# ============================================================
-# DASHBOARD
-# ============================================================
-
 if page == "🏠 Dashboard":
 
     st.markdown(
-        '<div class="main-title">'
-        '🏭 Smart Factory Dashboard'
-        '</div>',
+        '''
+        <div class="dashboard-header">
+            <div class="main-title">🏭 Smart Factory Dashboard</div>
+            <div class="subtitle">
+                AI-powered Factory Decision Support System
+            </div>
+        </div>
+        ''',
         unsafe_allow_html=True
     )
 
     st.markdown(
-        '<div class="subtitle">'
-        'AI-powered Factory Decision Support System'
-        '</div>',
+        '<div class="section-header">📊 Factory Overview</div>',
         unsafe_allow_html=True
     )
-
 
     # ========================================================
     # KPI CARDS
@@ -287,19 +420,17 @@ if page == "🏠 Dashboard":
     # MANAGEMENT DECISION SUPPORT
     # ========================================================
 
-    st.markdown("---")
-
     st.markdown(
-        '<div class="section-header">'
-        '🎯 Management Decision Support'
-        '</div>',
-        unsafe_allow_html=True
-    )
+    '<div class="section-header">'
+    '🎯 Management Decision Support'
+    '</div>',
+    unsafe_allow_html=True
+)
 
-    st.write(
-        "The system automatically identifies major factory "
-        "risks and provides recommended actions."
-    )
+    st.info(
+    "💡 The system automatically identifies major factory "
+    "risks and provides recommended actions."
+)
 
 
     # ========================================================
@@ -650,6 +781,9 @@ if page == "🏠 Dashboard":
         '<div class="section-header">⚠️ Smart Alerts</div>',
         unsafe_allow_html=True
     )
+    st.caption(
+    "Real-time alerts highlighting important factory risks and operational issues."
+)
 
     try:
 
@@ -696,6 +830,9 @@ if page == "🏠 Dashboard":
         '</div>',
         unsafe_allow_html=True
     )
+    st.caption(
+    "AI-generated recommendations to support faster management decisions."
+)
 
     try:
 
@@ -732,7 +869,12 @@ if page == "🏠 Dashboard":
 
     st.markdown("---")
 
-    st.subheader("🤖 ML-Based Production Forecast")
+    st.markdown(
+    '<div class="section-header">'
+    '🔮 ML-Based Production Forecast'
+    '</div>',
+    unsafe_allow_html=True
+)
 
     st.info(
         "Machine Learning Model: Random Forest Regression"
@@ -843,7 +985,10 @@ if page == "🏠 Dashboard":
 
 elif page == "📈 Production":
 
-    st.title("📈 Production Analysis")
+    st.markdown(
+    '<div class="section-header">📈 Production Analysis</div>',
+    unsafe_allow_html=True
+)
 
     col1, col2, col3 = st.columns(3)
 
@@ -902,7 +1047,10 @@ elif page == "📈 Production":
 
 elif page == "⚙️ Machines":
 
-    st.title("⚙️ Machine Monitoring")
+    st.markdown(
+    '<div class="section-header">⚙️ Machine Monitoring</div>',
+    unsafe_allow_html=True
+)
 
     col1, col2, col3 = st.columns(3)
 
@@ -957,7 +1105,10 @@ elif page == "⚙️ Machines":
 
 elif page == "📦 Inventory":
 
-    st.title("📦 Inventory Analysis")
+    st.markdown(
+    '<div class="section-header">📦 Inventory Analysis</div>',
+    unsafe_allow_html=True
+)
 
     st.metric(
         "⚠️ Low Stock Materials",
@@ -998,7 +1149,10 @@ elif page == "📦 Inventory":
 
 elif page == "✅ Quality":
 
-    st.title("✅ Quality Analysis")
+    st.markdown(
+    '<div class="section-header">✅ Quality Analysis</div>',
+    unsafe_allow_html=True
+)
 
     col1, col2, col3 = st.columns(3)
 
@@ -1055,7 +1209,10 @@ elif page == "✅ Quality":
 
 elif page == "💰 Cost Analysis":
 
-    st.title("💰 Cost Analysis")
+    st.markdown(
+    '<div class="section-header">💰 Cost Analysis</div>',
+    unsafe_allow_html=True
+)
 
     total_material = cost["material_cost"].sum()
     total_labor = cost["labor_cost"].sum()
@@ -1166,7 +1323,10 @@ elif page == "💰 Cost Analysis":
 
 elif page == "🌱 Energy Monitoring":
 
-    st.title("🌱 Energy Consumption Monitoring")
+    st.markdown(
+    '<div class="section-header">🌱 Energy Consumption Monitoring</div>',
+    unsafe_allow_html=True
+)
 
     total_energy = energy["energy_kwh"].sum()
 
@@ -1267,6 +1427,8 @@ elif page == "🌱 Energy Monitoring":
 # ============================================================
 
 elif page == "🤖 AI Assistant":
+    if "agent_chat_history" not in st.session_state:
+       st.session_state.agent_chat_history = []
 
     st.title("🤖 Factory AI Assistant")
 
@@ -1288,11 +1450,19 @@ elif page == "🤖 AI Assistant":
 
             try:
 
-                answer = get_answer(question)
+                answer = run_agent(question)
+
+                st.session_state.agent_chat_history.append(
+    {
+        "question": question,
+        "answer": answer
+    }
+)
+
 
                 st.markdown("### 🤖 AI Answer")
 
-                st.write(answer)
+                st.markdown(answer)
 
             except Exception as e:
 
